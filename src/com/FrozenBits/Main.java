@@ -133,26 +133,50 @@ public class Main {
     * Função para pedir a frota inteira
     * */
     public static void askFleet(int owner){
-/*
+
         for (int s = 0; s < 3; s++){
+        	boolean success = false;
             System.out.printf("indique a posição para o %d submarino:\n", s + 1);
-            map.addShip(askPos(),Ship.SINGLESHIP, Ship.PLAYER1);
+            do{
+            	success = map.addShip(askPos(), Options.SINGLESHIP, owner, '\0');
+            } while (!success);
+            map.drawMap(owner == PLAYER1 ? true : false);
         }
-*/
+        
+        
+
         for (int s = 0; s < 2; s++){
+        	boolean success = false;
             System.out.printf("indique a posição para o %d contratorpedeiro:\n", s + 1);
-            map.addShip(askPos(), Options.TWOSHIP, owner, requestRotation());
+            do {
+            	success = map.addShip(askPos(), Options.TWOSHIP, owner, requestRotation());
+            } while (!success);
+            map.drawMap(owner == PLAYER1 ? true : false);
         }
-/*
+
+        boolean success = false;
         System.out.println("indique a posição para o navio de guerra:\n");
-        map.addShip(new Ship(askPos(), Ship.tripleShip, owner, requestRotation()));
-
+        do {
+        	success = map.addShip(askPos(), Options.THREESHIP, owner, requestRotation());
+        } while (!success);
+        map.drawMap(owner == PLAYER1 ? true : false);
+        
+        success = false;
+        
         System.out.println("indique a posição para o navio tanque:\n");
-        map.addShip(new Ship(askPos(), Ship.quadrupleShip, owner, requestRotation()));
+        do {
+        	success = map.addShip(askPos(), Options.FOURTHSHIP, owner, requestRotation());
+        } while (!success);
+        map.drawMap(owner == PLAYER1 ? true : false);
 
+        success = false;
+        
         System.out.println("indique a posição para o porta aviões:\n");
-        map.addShip(new Ship(askPos(), Ship.quintupleShip, owner, requestRotation()));
-*/
+        do {
+        	success = map.addShip(askPos(), Options.FITHSHIP, owner, requestRotation());
+        } while (!success);
+        map.drawMap(owner == PLAYER1 ? true : false);
+        
     }
 
     /*
